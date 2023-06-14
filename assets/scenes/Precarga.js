@@ -8,30 +8,31 @@ export default class Precarga extends Phaser.Scene {
 
   preload() {
     // load assets
-    this.load.tilemapTiledJSON("map1", "../public/tilemaps/nivel1.json");
-    this.load.tilemapTiledJSON("map2", "../public/tilemaps/nivel2.json");
-    this.load.tilemapTiledJSON("map3", "../public/tilemaps/nivel3.json");
+    this.load.tilemapTiledJSON("map1", "../public/tilemap/level1.json");
 
-    this.load.image("floor", "./public/images/floor.png");
-    this.load.image("background", "./public/images/background.jpg");
-    this.load.image("platform", "./public/images/platform.png");
-    this.load.image("platform2", "./public/images/platform2.png");
-
-    this.load.image("menuBackGround", "../public/images/menuBackGround.png");
+    this.load.image("background", "./public/images/background.png");
+    this.load.image("platform2", "./public/images/plataforma.png");
+    this.load.image("platform", "./public/images/plataforma2.png");
+    this.load.image("button", "./public/images/button.png");
+    this.load.image("doorOpen", "../public/images/doorOpen.png");
+    this.load.image("doorClosed", "../public/images/doorClosed.png");
+    this.load.image("engranaje", "../public/images/engranaje1.png");
+    this.load.image("menuBackGround", "../public/images/backgroundMenu.png");
     this.load.image("startButton", "../public/images/startButton.png");
-    this.load.image("startButtoOn", "../public/images/startButton_on.png");
-    this.load.image("startButtonPressed", "../public/images/startButtonPressed.png");
+    this.load.image("cauldron", "../public/images/caldero.png");
+    this.load.image("startButtonOn", "../public/images/startButton_on.png");
+    this.load.image(
+      "startButtonPressed",
+      "../public/images/startButtonPressed.png"
+    );
     this.load.image("candy", "../public/images/candy.png");
 
-  
-    this.load.image("yEnemy", "../public/images/yEnemy.png");
-    this.load.spritesheet("dude", "./public/images/dude.png", {
+    this.load.spritesheet("lyla", "./public/images/lyla.png", {
       frameWidth: 110,
       frameHeight: 171,
     });
-  
+
     this.load.image("salida", "./public/images/salida.png");
-   
   }
 
   create() {
@@ -39,27 +40,26 @@ export default class Precarga extends Phaser.Scene {
     // se crea una sola vez, para que no de error en el restart de la escena
     this.anims.create({
       key: "left",
-      frames: this.anims.generateFrameNumbers("dude", { start: 0, end: 3 }),
+      frames: this.anims.generateFrameNumbers("lyla", { start: 0, end: 3 }),
       frameRate: 10,
       repeat: -1,
     });
 
     this.anims.create({
       key: "turn",
-      frames: [{ key: "dude", frame: 4 }],
+      frames: [{ key: "lyla", frame: 4 }],
       frameRate: 20,
     });
 
     this.anims.create({
       key: "right",
-      frames: this.anims.generateFrameNumbers("dude", { start: 5, end: 8 }),
+      frames: this.anims.generateFrameNumbers("lyla", { start: 5, end: 8 }),
       frameRate: 10,
       repeat: -1,
     });
-  // //////
-    
-  
+    // //////
+
     // init scene juego
-    this.scene.start("juego");
+    this.scene.start("Menu");
   }
 }
