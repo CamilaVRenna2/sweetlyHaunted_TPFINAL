@@ -36,7 +36,7 @@ export default class juego extends Phaser.Scene {
 
     platformLayer.setCollisionByProperty({ colision: true });
     wallLayer.setCollisionByProperty({ colision: true });
-    // console.log("spawn point player", objectsLayer);
+    console.log("spawn point player", objectsLayer);
 
     // crear el player
     // Find in the Object Layer, the name "lyla" and get position
@@ -63,20 +63,20 @@ export default class juego extends Phaser.Scene {
           break;
         }
       }
+    
+      switch (type) {
+        case "platform": {
+          this.physics.add.sprite(x, y, "platform2");
+          break;
+        }
+      }
+      switch (type) {
+        case "button": {
+          this.physics.add.sprite(x, y, "button");
+          break;
+        }
+      }
     }
-      // switch (type) {
-      //   case "platform": {
-      //     this.physics.add.sprite(x, y, "platform2");
-      //     break;
-      //   }
-      // }
-      // switch (type) {
-      //   case "button": {
-      //     this.physics.add.sprite(x, y, "button");
-      //     break;
-      //   }
-      // }
-    // }
   
     this.player.setBounce(0.00);
     this.player.setCollideWorldBounds(false);
@@ -125,26 +125,18 @@ export default class juego extends Phaser.Scene {
     if (this.gameOver) {
       this.scene.start("GameOver");
     }
-    // update game objects
-    // check input
-    //move left
-
     if (this.cursors.left.isDown) {
       this.player.setVelocityX(-260);
       this.player.anims.play("left", true);
     }
-    //move right
     else if (this.cursors.right.isDown) {
       this.player.setVelocityX(260);
       this.player.anims.play("right", true);
     }
-    //stop
     else {
       this.player.setVelocityX(0);
       this.player.anims.play("turn");
     }
-
-    //jump
     if (this.cursors.up.isDown && this.player.body.blocked.down) {
       this.player.setVelocityY(-550);
     }
