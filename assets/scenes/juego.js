@@ -26,58 +26,35 @@ export default class juego extends Phaser.Scene {
     const capaBackground = map.addTilesetImage("fondo", "background");
     const capaPlatform = map.addTilesetImage("plataforma2", "platform");
     const capaEngranaje = map.addTilesetImage("engranaje1", "engranaje");
-
+    const capaWall = map.addTilesetImage("wall", "wall");
     // Parameters: layer name (or index) from Tiled, tileset, x, y
     const backgroundLayer = map.createLayer("background", capaBackground, 0, 0);
     const platformLayer = map.createLayer("platform", capaPlatform, 0, 0);
     const engranajeLayer = map.createLayer("engranaje", capaEngranaje, 0, 0);
-
+    const wallLayer = map.createLayer("wall", capaWall, 0, 0);
     const objectsLayer = map.getObjectLayer("objects");
 
     platformLayer.setCollisionByProperty({ colision: true });
-
+    wallLayer.setCollisionByProperty({ colision: true });
     // console.log("spawn point player", objectsLayer);
 
     // crear el player
     // Find in the Object Layer, the name "lyla" and get position
-    let spawnPoint = map.findObject("objects", (obj) => obj.name === "player");
-    console.log(spawnPoint);
-    // The player and its settings
-
-    // this.player = this.physics.add.sprite(
-    //   93.9393939393939,
-    //   1145.45454545455,
-    //   "lyla"
+  
+    // spawnPoint = map.findObject("objects", (obj) => obj.name === "doorClosed");
+    // console.log(spawnPoint);
+    // this.doorClosed = this.physics.add.sprite(
+    //   2160.60606060606,
+    //   1139.39393939394,
+    //   "doorClosed"
     // );
-
-    //  Player physics properties. Give the little guy a slight bounce.
-
-    spawnPoint = map.findObject("objects", (obj) => obj.name === "doorClosed");
-    console.log(spawnPoint);
-    this.doorClosed = this.physics.add.sprite(
-      2160.60606060606,
-      1139.39393939394,
-      "doorClosed"
-    );
-    spawnPoint = map.findObject("objects", (obj) => obj.name === "1");
-    console.log(spawnPoint);
-    //
-
+ 
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    // Create empty group of starts
-    this.candy = this.physics.add.group();
-
-    // find object layer
-    // if type is "stars", add to stars group
-    objectsLayer.objects.forEach((objData) => {
-      //console.log(objData.name, objData.type, objData.x, objData.y);
-
+    objectsLayer.objects.forEach(objData)=>{
       const { x = 0, y = 0, name } = objData;
       switch (name) {
         case "candy": {
-          // add star to scene
-          // console.log("candy agregada: ", x, y);
           const candy = this.candy.create(x, y, "candy");
           break;
         }
@@ -86,30 +63,36 @@ export default class juego extends Phaser.Scene {
           break;
         }
       }
-
-      switch (type) {
-        case "button": {
-          this.physics.add.sprite(x, y, "button");
-          break;
-        }
-      }
-    });
-    this.player.setBounce(0.01);
-    this.player.setCollideWorldBounds(true);
+    }
+      // switch (type) {
+      //   case "platform": {
+      //     this.physics.add.sprite(x, y, "platform2");
+      //     break;
+      //   }
+      // }
+      // switch (type) {
+      //   case "button": {
+      //     this.physics.add.sprite(x, y, "button");
+      //     break;
+      //   }
+      // }
+    // }
+  
+    this.player.setBounce(0.00);
+    this.player.setCollideWorldBounds(false);
     this.player.setVelocity(10);
 
-    this.doorClosed.visible = true;
+    // this.doorClosed.visible = true;
 
-    // this.physics.add.collider(this.player, platformLayer);
-    // this.physics.add.collider(this.candy, platformLayer);
-    // this.physics.add.collider(
-    //   this.player,
-    //   this.candy,
-    //   this.collectedCandy(),
-    //   null,
-    //   this
-    // );
-
+    this.physics.add.collider(this.player, platformLayer);
+    this.physics.add.collider(this.candy, platformLayer);
+     
+    this.physics.add.overlap(
+        this.player,
+        this.candy,
+        this.collectCandy,
+        () => this.amountcandys >= 1,
+        );
     // this.physics.add.collider(this.doorOpen, plataformaLayer);
     // this.physics.add.overlap(
     //   this.player,
@@ -135,8 +118,9 @@ export default class juego extends Phaser.Scene {
     // camara dont go out of the map
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.startFollow(this.player);
-  }
-
+    }
+  
+  
   update() {
     if (this.gameOver) {
       this.scene.start("GameOver");
@@ -189,5 +173,5 @@ export default class juego extends Phaser.Scene {
   //   this.amountcandysTexto.setScrollFactor(0);
   // }
 
-  NextLevel(player, doorOpen) {}
+  // NextLevel(player, doorOpen) {}
 }

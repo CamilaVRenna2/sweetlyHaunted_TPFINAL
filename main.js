@@ -5,8 +5,8 @@ import Menu from "./assets/scenes/Menu.js";
 // Create a new Phaser config object
 const config = {
   type: Phaser.AUTO,
-  width: 1200,
-  height: 850,
+  width: 1920,
+  height: 1200,
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
@@ -15,7 +15,7 @@ const config = {
       height: 1000,
     },
     max: {
-      width: 1600,
+      width: 1920,
       height: 1200,
     },
   },

@@ -13,6 +13,7 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("background", "./public/images/background.png");
     this.load.image("platform2", "./public/images/plataforma.png");
     this.load.image("platform", "./public/images/plataforma2.png");
+    this.load.image("wall", "./public/images/wall.png");
     this.load.image("button", "./public/images/button.png");
     this.load.image("doorOpen", "../public/images/doorOpen.png");
     this.load.image("doorClosed", "../public/images/doorClosed.png");
@@ -41,20 +42,20 @@ export default class Precarga extends Phaser.Scene {
     this.anims.create({
       key: "left",
       frames: this.anims.generateFrameNumbers("lyla", { start: 0, end: 3 }),
-      frameRate: 10,
+      frameRate: 8,
       repeat: -1,
     });
 
     this.anims.create({
       key: "turn",
       frames: [{ key: "lyla", frame: 4 }],
-      frameRate: 20,
+      frameRate: 8,
     });
 
     this.anims.create({
       key: "right",
       frames: this.anims.generateFrameNumbers("lyla", { start: 5, end: 8 }),
-      frameRate: 10,
+      frameRate: 8,
       repeat: -1,
     });
     // //////

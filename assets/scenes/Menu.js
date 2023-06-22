@@ -4,9 +4,9 @@ export default class Menu extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(600, 415, "menuBackGround");
+    this.add.image(960, 600, "menuBackGround");
     let startButton = this.add
-      .image(700, 450, "startButton")
+      .image(1300, 550, "startButton")
       .setInteractive(this.input.makePixelPerfect());
 
     startButton.on("pointerdown", () => {
