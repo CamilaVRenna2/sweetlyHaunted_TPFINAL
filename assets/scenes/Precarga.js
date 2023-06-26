@@ -31,6 +31,7 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("level3ButtonOn", "../public/images/level3ButtonOn.png");
     this.load.image("level2ButtonBloq", "../public/images/level2ButtonBloq.png");
     this.load.image("level3ButtonBloq", "../public/images/level3ButtonBloq.png");
+    this.load.image("light", "../public/images/light.png");
     this.load.image(
       "startButtonPressed",
       "../public/images/startButtonPressed.png"

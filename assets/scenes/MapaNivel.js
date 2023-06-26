@@ -6,7 +6,7 @@ export default class MapaNivel extends Phaser.Scene {
     create() {
       this.add.image(960, 600, "backgroundMapa");
       let level1Button = this.add
-        .image(300, 650, "level1Button")
+        .image(300, 670, "level1Button")
         .setInteractive(this.input.makePixelPerfect());
 
       level1Button.on("pointerover", () => {
@@ -21,7 +21,7 @@ export default class MapaNivel extends Phaser.Scene {
       });
       ////////
       let level2Button = this.add
-        .image(900, 650, "level2ButtonBloq")
+        .image(920, 670, "level2ButtonBloq")
         .setInteractive(this.input.makePixelPerfect());
   
      
@@ -34,7 +34,7 @@ export default class MapaNivel extends Phaser.Scene {
       });
       ////////
       let level3Button = this.add
-      .image(1400, 650, "level3ButtonBloq")
+      .image(1530, 670, "level3ButtonBloq")
       .setInteractive(this.input.makePixelPerfect());
 
     level3Button.on("pointerover", () => {
@@ -44,6 +44,7 @@ export default class MapaNivel extends Phaser.Scene {
     level3Button.on("pointerout", () => {
       level3Button.setTexture("level3ButtonBloq");
     });
+   
     }
   }
   
