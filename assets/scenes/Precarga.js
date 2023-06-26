@@ -22,6 +22,15 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("startButton", "../public/images/startButton.png");
     this.load.image("cauldron", "../public/images/caldero.png");
     this.load.image("startButtonOn", "../public/images/startButton_on.png");
+    this.load.image("backgroundMapa", "../public/images/backgroundmapa.png");
+    this.load.image("level1Button", "../public/images/level1Button.png");
+    this.load.image("level1ButtonOn", "../public/images/level1ButtonOn.png");
+    this.load.image("level2Button", "../public/images/level2Button.png");
+    this.load.image("level2ButtonOn", "../public/images/level2ButtonOn.png");
+    this.load.image("level3Button", "../public/images/level3Button.png");
+    this.load.image("level3ButtonOn", "../public/images/level3ButtonOn.png");
+    this.load.image("level2ButtonBloq", "../public/images/level2ButtonBloq.png");
+    this.load.image("level3ButtonBloq", "../public/images/level3ButtonBloq.png");
     this.load.image(
       "startButtonPressed",
       "../public/images/startButtonPressed.png"
@@ -33,7 +42,6 @@ export default class Precarga extends Phaser.Scene {
       frameHeight: 171,
     });
 
-    this.load.image("salida", "./public/images/salida.png");
   }
 
   create() {
@@ -59,7 +67,19 @@ export default class Precarga extends Phaser.Scene {
       repeat: -1,
     });
     // //////
+    this.anims.create({
+      key: "Gleft",
+      frames: this.anims.generateFrameNumbers("ghost", { start: 0, end: 1 }),
+      frameRate: 8,
+      repeat: -1,
+    });
 
+    this.anims.create({
+      key: "Gright",
+      frames: this.anims.generateFrameNumbers("ghost", { start: 2, end: 3 }),
+      frameRate: 8,
+      repeat: -1,
+    });
     // init scene juego
     this.scene.start("Menu");
   }

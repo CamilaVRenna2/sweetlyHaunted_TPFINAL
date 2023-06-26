@@ -16,7 +16,7 @@ export default class Menu extends Phaser.Scene {
       startButton.setTexture("startButtonOn");
     });
     startButton.on("pointerup", () => {
-      this.scene.start("juego");
+      this.scene.start("MapaNivel");
     });
 
     startButton.on("pointerout", () => {
