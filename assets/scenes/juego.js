@@ -82,10 +82,11 @@ export default class juego extends Phaser.Scene {
     });
     console.log("spawn point player", objectsLayer);
     this.player.setBounce(0.0);
-    this.player.setCollideWorldBounds(false);
+    this.player.setCollideWorldBounds(true);
     this.player.setVelocity(10);
 
     this.physics.add.collider(this.player, platformLayer);
+    this.physics.add.collider(this.player, wallLayer);
 
     this.physics.add.overlap(
       this.player,
@@ -101,10 +102,13 @@ export default class juego extends Phaser.Scene {
     this.amountcandysTexto = this.add.text(
       10,
       20,
-      `Nivel: ${this.nivel} / Candys collected: ${this.amountcandys}`
+      `Nivel: ${this.nivel} / Dulces obtenidos: ${this.amountcandys}`
     );
 
     this.amountcandysTexto.setScrollFactor(0);
+    
+    spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+  
   }
 
   update() {
@@ -124,7 +128,10 @@ export default class juego extends Phaser.Scene {
     if (this.cursors.up.isDown && this.player.body.blocked.down) {
       this.player.setVelocityY(-550);
     }
+    if (Phaser.Input.Keyboard.JustDown(spaceKey)) {
+      ;
   }
+}
 
   collectCandy(player, candy) {
     console.log("candy hit");

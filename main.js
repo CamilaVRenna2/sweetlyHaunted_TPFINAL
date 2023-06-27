@@ -8,24 +8,24 @@ import MapaNivel from "./assets/scenes/MapaNivel.js";
 // Create a new Phaser config object
 const config = {
   type: Phaser.AUTO,
-  width: 1920,
-  height: 1200,
+  width: 1220,
+  height: 763,
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
     min: {
-      width: 1200,
-      height: 1000,
+      width: 1220,
+      height: 763,
     },
     max: {
-      width: 1920,
-      height: 1200,
+      width: 1220,
+      height: 763,
     },
   },
   physics: {
     default: "arcade",
     arcade: {
-      gravity: { y: 420 },
+      gravity: { y: 1220 },
       debug: true,
     },
   },

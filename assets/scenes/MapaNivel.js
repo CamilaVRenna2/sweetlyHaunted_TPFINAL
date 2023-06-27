@@ -4,9 +4,9 @@ export default class MapaNivel extends Phaser.Scene {
     }
   
     create() {
-      this.add.image(960, 600, "backgroundMapa");
+      this.add.image(610, 380, "backgroundMapa");
       let level1Button = this.add
-        .image(300, 670, "level1Button")
+        .image(180, 430, "level1Button")
         .setInteractive(this.input.makePixelPerfect());
 
       level1Button.on("pointerover", () => {
@@ -21,7 +21,7 @@ export default class MapaNivel extends Phaser.Scene {
       });
       ////////
       let level2Button = this.add
-        .image(920, 670, "level2ButtonBloq")
+        .image(585, 430, "level2ButtonBloq")
         .setInteractive(this.input.makePixelPerfect());
   
      
@@ -33,17 +33,17 @@ export default class MapaNivel extends Phaser.Scene {
         level2Button.setTexture("level2ButtonBloq");
       });
       ////////
-      let level3Button = this.add
-      .image(1530, 670, "level3ButtonBloq")
-      .setInteractive(this.input.makePixelPerfect());
+    //   let level3Button = this.add
+    //   .image(1530, 670, "level3ButtonBloq")
+    //   .setInteractive(this.input.makePixelPerfect());
 
-    level3Button.on("pointerover", () => {
-      level3Button.setTexture("level3ButtonBloq");
-    });
+    // level3Button.on("pointerover", () => {
+    //   level3Button.setTexture("level3ButtonBloq");
+    // });
    
-    level3Button.on("pointerout", () => {
-      level3Button.setTexture("level3ButtonBloq");
-    });
+    // level3Button.on("pointerout", () => {
+    //   level3Button.setTexture("level3ButtonBloq");
+    // });
    
     }
   }
