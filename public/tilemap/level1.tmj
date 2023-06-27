@@ -307,114 +307,6 @@
                  "y":1517.27272727273
                 }, 
                 {
-                 "height":0,
-                 "id":33,
-                 "name":"9",
-                 "point":true,
-                 "rotation":0,
-                 "type":"button",
-                 "visible":true,
-                 "width":0,
-                 "x":1471.39393939393,
-                 "y":733.272727272724
-                }, 
-                {
-                 "height":0,
-                 "id":9,
-                 "name":"8",
-                 "point":true,
-                 "rotation":0,
-                 "type":"button",
-                 "visible":true,
-                 "width":0,
-                 "x":2147.46581875993,
-                 "y":749.731078672249
-                }, 
-                {
-                 "height":0,
-                 "id":10,
-                 "name":"7",
-                 "point":true,
-                 "rotation":0,
-                 "type":"button",
-                 "visible":true,
-                 "width":0,
-                 "x":1869.28809558221,
-                 "y":1116.5096112155
-                }, 
-                {
-                 "height":0,
-                 "id":11,
-                 "name":"6",
-                 "point":true,
-                 "rotation":0,
-                 "type":"button",
-                 "visible":true,
-                 "width":0,
-                 "x":1950.55113937467,
-                 "y":1118.00732283085
-                }, 
-                {
-                 "height":0,
-                 "id":12,
-                 "name":"5",
-                 "point":true,
-                 "rotation":0,
-                 "type":"button",
-                 "visible":true,
-                 "width":0,
-                 "x":2027.101411572,
-                 "y":1115.41060846943
-                }, 
-                {
-                 "height":0,
-                 "id":13,
-                 "name":"4",
-                 "point":true,
-                 "rotation":0,
-                 "type":"button",
-                 "visible":true,
-                 "width":0,
-                 "x":1431.17936117936,
-                 "y":1486.65568242039
-                }, 
-                {
-                 "height":0,
-                 "id":14,
-                 "name":"3",
-                 "point":true,
-                 "rotation":0,
-                 "type":"button",
-                 "visible":true,
-                 "width":0,
-                 "x":877.429300958713,
-                 "y":1145.11615358674
-                }, 
-                {
-                 "height":0,
-                 "id":15,
-                 "name":"2",
-                 "point":true,
-                 "rotation":0,
-                 "type":"button",
-                 "visible":true,
-                 "width":0,
-                 "x":753.242761478055,
-                 "y":1143.12549983138
-                }, 
-                {
-                 "height":0,
-                 "id":16,
-                 "name":"1",
-                 "point":true,
-                 "rotation":0,
-                 "type":"button",
-                 "visible":true,
-                 "width":0,
-                 "x":359.127041479983,
-                 "y":1477.74418268536
-                }, 
-                {
                  "height":70.6666666666665,
                  "id":24,
                  "name":"4",
@@ -503,17 +395,6 @@
                  "y":409.575757575754
                 }, 
                 {
-                 "height":83,
-                 "id":36,
-                 "name":"cauldron",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":90,
-                 "x":2821.71212121212,
-                 "y":1478.42424242424
-                }, 
-                {
                  "height":70.3636363636363,
                  "id":39,
                  "name":"10",
@@ -523,42 +404,6 @@
                  "width":182.878787878788,
                  "x":445.242424242424,
                  "y":413.181818181818
-                }, 
-                {
-                 "height":0,
-                 "id":40,
-                 "name":"10",
-                 "point":true,
-                 "rotation":0,
-                 "type":"button",
-                 "visible":true,
-                 "width":0,
-                 "x":410.515151515151,
-                 "y":723.909090909091
-                }, 
-                {
-                 "height":0,
-                 "id":41,
-                 "name":"player",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":99.8787878787877,
-                 "y":1493.9393939394
-                }, 
-                {
-                 "height":0,
-                 "id":43,
-                 "name":"candy",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":5058.90909090909,
-                 "y":1433.51515151515
                 }, 
                 {
                  "height":377.083333333333,
@@ -605,6 +450,41 @@
                  "y":1185.58333333333
                 }, 
                 {
+                 "height":83,
+                 "id":36,
+                 "name":"cauldron",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":90,
+                 "x":2821.71212121212,
+                 "y":1478.42424242424
+                }, 
+                {
+                 "height":0,
+                 "id":41,
+                 "name":"player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":99.8787878787877,
+                 "y":1493.9393939394
+                }, 
+                {
+                 "height":0,
+                 "id":43,
+                 "name":"candy",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":5058.90909090909,
+                 "y":1433.51515151515
+                }, 
+                {
                  "height":0,
                  "id":57,
                  "name":"ghost",
@@ -627,18 +507,215 @@
                  "width":0,
                  "x":1580.29115341545,
                  "y":714.893617021277
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":12,
+         "name":"button",
+         "objects":[
+                {
+                 "height":0,
+                 "id":33,
+                 "name":"9",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"button",
+                 "visible":true,
+                 "width":0,
+                 "x":1471.39393939393,
+                 "y":733.272727272724
+                }, 
+                {
+                 "height":0,
+                 "id":40,
+                 "name":"10",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"button",
+                 "visible":true,
+                 "width":0,
+                 "x":410.515151515151,
+                 "y":723.909090909091
                 }, 
                 {
                  "height":0,
                  "id":61,
                  "name":"13",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"button",
                  "visible":true,
                  "width":0,
                  "x":2824.24242424242,
                  "y":724.242424242424
+                }, 
+                {
+                 "height":0,
+                 "id":12,
+                 "name":"5",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"button",
+                 "visible":true,
+                 "width":0,
+                 "x":2027.101411572,
+                 "y":1115.41060846943
+                }, 
+                {
+                 "height":0,
+                 "id":13,
+                 "name":"4",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"button",
+                 "visible":true,
+                 "width":0,
+                 "x":1431.17936117936,
+                 "y":1486.65568242039
+                }, 
+                {
+                 "height":0,
+                 "id":14,
+                 "name":"3",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"button",
+                 "visible":true,
+                 "width":0,
+                 "x":877.429300958713,
+                 "y":1145.11615358674
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"1",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"button",
+                 "visible":true,
+                 "width":0,
+                 "x":359.127041479983,
+                 "y":1477.74418268536
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"button",
+                 "visible":true,
+                 "width":0,
+                 "x":753.242761478055,
+                 "y":1143.12549983138
+                }, 
+                {
+                 "height":0,
+                 "id":11,
+                 "name":"6",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"button",
+                 "visible":true,
+                 "width":0,
+                 "x":1950.55113937467,
+                 "y":1118.00732283085
+                }, 
+                {
+                 "height":0,
+                 "id":9,
+                 "name":"8",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"button",
+                 "visible":true,
+                 "width":0,
+                 "x":2147.46581875993,
+                 "y":749.731078672249
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"7",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"colision",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"button",
+                 "visible":true,
+                 "width":0,
+                 "x":1869.28809558221,
+                 "y":1116.5096112155
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -646,7 +723,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":12,
+ "nextlayerid":13,
  "nextobjectid":63,
  "orientation":"orthogonal",
  "renderorder":"right-down",

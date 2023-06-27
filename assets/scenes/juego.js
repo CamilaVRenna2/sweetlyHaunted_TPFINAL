@@ -10,6 +10,8 @@ export default class juego extends Phaser.Scene {
     this.amountcandys = 0;
     console.log("Prueba !");
     this.gameOver = false;
+    var platforms;
+    var tween;
   }
 
   create() {
@@ -30,6 +32,21 @@ export default class juego extends Phaser.Scene {
 
     platformLayer.setCollisionByProperty({ colision: true });
     wallLayer.setCollisionByProperty({ colision: true });
+  
+      // Agrega las plataformas
+      this.add.image(1514.42424242425, 1178.60606060606, "platform2");
+      this.add.image(2284.54545454546, 799.757575757576, "platform2");
+      this.add.image(2614.42424242424,804.757575757574, "platform2");
+      this.add.image(2899.27272727272, 425.969696969695, "platform2");
+      this.add.image(2460.66666666667, 1355.0303030303, "platform2");
+      this.add.image(510.7575757575753, 1198.75757575758, "platform2");
+      this.add.image(1869.01515151515, 415.13636363636, "platform2");
+      this.add.image(1539.33333333333, 409.575757575754, "platform2");
+      this.add.image(445.242424242424, 413.181818181818, "platform2");
+    
+      // Colisiones
+     
+    
 
     this.candies = this.physics.add.group({
       inmovable: true,
@@ -45,7 +62,7 @@ export default class juego extends Phaser.Scene {
     });
 
     this.platformsMobible = this.physics.add.group({
-      inmovable: true,
+      inmovable: false,
       allowGravity: false,
     });
 
@@ -67,25 +84,27 @@ export default class juego extends Phaser.Scene {
           break;
         }
       }
-
-      switch (type) {
-        case "platform": {
-          this.platformsMobible.create(x, y, "platform2");
-          break;
-        }
-        case "button": {
-          this.buttons.create(x, y, "button");
-          console.log("button");
-          break;
-        }
-      }
+      // switch (type) {
+      //   case "platform": {
+      //     this.platformsMobible.create(x, y, "platform2");
+      //     break;
+      //   }
+      //   switch (type) {
+      //     case "wall": {
+      //       this.platformsMobible.create(x, y, "wall2");
+      //       break;
+      //     }
+      //   }
+      // }
     });
+    
     console.log("spawn point player", objectsLayer);
     this.player.setBounce(0.0);
     this.player.setCollideWorldBounds(true);
     this.player.setVelocity(10);
 
     this.physics.add.collider(this.player, platformLayer);
+    
     this.physics.add.collider(this.player, wallLayer);
 
     this.physics.add.overlap(
@@ -107,9 +126,8 @@ export default class juego extends Phaser.Scene {
 
     this.amountcandysTexto.setScrollFactor(0);
     
-    spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-  
-  }
+    
+    }
 
   update() {
     if (this.gameOver) {
@@ -128,9 +146,20 @@ export default class juego extends Phaser.Scene {
     if (this.cursors.up.isDown && this.player.body.blocked.down) {
       this.player.setVelocityY(-550);
     }
-    if (Phaser.Input.Keyboard.JustDown(spaceKey)) {
-      ;
-  }
+    
+  // MovePlatform
+  //   const startY = 1178.60606060606;
+  //   const targetY = -200;
+  //   const duration = randomDuration;
+
+  //   this.tweens.add({
+  //     targets: platformsGroup,
+  //     y: targetY,
+  //     duration: duration,
+  //     ease: "Linear",
+  //     yoyo: true,
+  //     loop: true,
+  //   });
 }
 
   collectCandy(player, candy) {
