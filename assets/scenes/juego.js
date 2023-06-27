@@ -5,8 +5,7 @@ export default class juego extends Phaser.Scene {
     super("juego");
   }
   init() {
-
-    this.candy=1;
+    this.candy = 1;
     this.nivel = 1;
     this.amountcandys = 0;
     console.log("Prueba !");
@@ -28,88 +27,86 @@ export default class juego extends Phaser.Scene {
     const platformLayer = map.createLayer("platform", capaPlatform, 0, 0);
     const engranajeLayer = map.createLayer("engranaje", capaEngranaje, 0, 0);
     const wallLayer = map.createLayer("wall", capaWall, 0, 0);
-   
+
     platformLayer.setCollisionByProperty({ colision: true });
     wallLayer.setCollisionByProperty({ colision: true });
-   
- 
+
+    this.candies = this.physics.add.group({
+      inmovable: true,
+      allowGravity: false,
+    });
+    this.buttons = this.physics.add.group({
+      inmovable: true,
+      allowGravity: false,
+    });
+    this.doorsClosed = this.physics.add.group({
+      inmovable: true,
+      allowGravity: false,
+    });
+
+    this.platformsMobible = this.physics.add.group({
+      inmovable: true,
+      allowGravity: false,
+    });
+
     this.cursors = this.input.keyboard.createCursorKeys();
-    // const objectsLayer = map.getObjectLayer("objects");
-    // objectsLayer.objects.forEach((objData)=>{
-    //   const { x = 0, y = 0, name } = objData;
-    //   switch (name) {
-    //     case "candy": {
-    //       this.candy = this.candy.create(x, y, "candy");
-    //       break;
-    //     }
-    //     case "doorClosed": {
-    //       const doorClosed = this.doorClosed.create(x, y, "doorClosed");
-    //       break;
-    //     }
-    //     case "player": {
-    //       this.player = this.physics.add.sprite(x, y, "lyla");
-    //       break;
-    //     }
-    //   }
-    
-    //   switch (type) {
-    //     case "platform": {
-    //       this.physics.add.sprite(x, y, "platform2");
-    //       break;
-    //     }
-    //   }
-    //   switch (type) {
-    //     case "button": {
-    //       this.physics.add.sprite(x, y, "button");
-    //       break;
-    //     }
-    //   }
-    // });
-    // console.log("spawn point player", objectsLayer);
-    // this.player.setBounce(0.00);
-    // this.player.setCollideWorldBounds(false);
-    // this.player.setVelocity(10);
+    const objectsLayer = map.getObjectLayer("objects");
+    objectsLayer.objects.forEach((objData) => {
+      const { x = 0, y = 0, name, type } = objData;
+      switch (name) {
+        case "candy": {
+          this.candy = this.candies.create(x, y, "candy");
+          break;
+        }
+        case "doorClosed": {
+          const doorClosed = this.doorsClosed.create(x, y, "doorClosed");
+          break;
+        }
+        case "player": {
+          this.player = this.physics.add.sprite(x, y, "lyla");
+          break;
+        }
+      }
 
-    // this.doorClosed.visible = true;
+      switch (type) {
+        case "platform": {
+          this.platformsMobible.create(x, y, "platform2");
+          break;
+        }
+        case "button": {
+          this.buttons.create(x, y, "button");
+          console.log("button");
+          break;
+        }
+      }
+    });
+    console.log("spawn point player", objectsLayer);
+    this.player.setBounce(0.0);
+    this.player.setCollideWorldBounds(false);
+    this.player.setVelocity(10);
 
-    // this.physics.add.collider(this.player, platformLayer);
-    // this.physics.add.collider(this.candy, platformLayer);
-     
-    // this.physics.add.overlap(
-    //     this.player,
-    //     this.candy,
-    //     this.collectCandy,
-    //     () => this.amountcandys >= 1,
-    //     );
+    this.physics.add.collider(this.player, platformLayer);
 
-    // // this.physics.add.collider(this.doorOpen, plataformaLayer);
-    // // this.physics.add.overlap(
-    // //   this.player,
-    // //   this.doorOpen,
-    // //   this.NextLevel,
-    // //   () => this.amountcandys >= 1, // condicion de ejecucion
-    // //   this
-    // // );
+    this.physics.add.overlap(
+      this.player,
+      this.candies,
+      this.collectCandy,
+      null,
+      this
+    );
 
-    // /// mostrar amountcandy en pantalla
-    // this.amountcandysTexto = this.add.text(
-    //   20,
-    //   5,
-    //   "Nivel: " +
-    //     this.nivel +
-    //     " / candys collected: " +
-    //     { fontSize: "24px", fontFamily: "impact", fill: "#FFFFFF" }
-    // );
-    // this.amountcandys.toString(),
-    //   // world bounds
-    //   this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-
-    // camara dont go out of the map
-    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.startFollow(this.player);
-    }
-  
-  
+    this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.amountcandysTexto = this.add.text(
+      10,
+      20,
+      `Nivel: ${this.nivel} / Candys collected: ${this.amountcandys}`
+    );
+
+    this.amountcandysTexto.setScrollFactor(0);
+  }
+
   update() {
     if (this.gameOver) {
       this.scene.start("GameOver");
@@ -117,36 +114,25 @@ export default class juego extends Phaser.Scene {
     if (this.cursors.left.isDown) {
       this.player.setVelocityX(-260);
       this.player.anims.play("left", true);
-    }
-    else if (this.cursors.right.isDown) {
+    } else if (this.cursors.right.isDown) {
       this.player.setVelocityX(260);
       this.player.anims.play("right", true);
-    }
-    else {
+    } else {
       this.player.setVelocityX(0);
       this.player.anims.play("turn");
     }
     if (this.cursors.up.isDown && this.player.body.blocked.down) {
       this.player.setVelocityY(-550);
     }
-
-    
   }
 
-  // collectedCandy(player, candy) {
-  //   candy.disableBody(true, true);
-
-  //   // todo / para hacer: sumar puntaje
-  //   //this.amountcandys = this.amountcandys + 1;
-
-  //   if (this.candys.getTotalUsed() === 0) {
-  //     this.doorOpen.visible = true;
-  //   }
-  
-  //   this.amountcandys++;
-  //   this.amountcandysTexto.setScrollFactor(0);
-  // }
-
-  // NextLevel(player, doorOpen) {}
-
+  collectCandy(player, candy) {
+    console.log("candy hit");
+    candy.disableBody(true, true);
+    this.amountcandys++;
+    console.log(this.amountcandys);
+    this.amountcandysTexto.setText(
+      `Nivel: ${this.nivel} / Candys collected: ${this.amountcandys}`
+    );
+  }
 }
