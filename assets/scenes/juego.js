@@ -34,9 +34,9 @@ export default class juego extends Phaser.Scene {
     wallLayer.setCollisionByProperty({ colision: true });
   
       // Agrega las plataformas
-      this.add.image(1514.42424242425, 1178.60606060606, "platform2");
-      this.add.image(2284.54545454546, 799.757575757576, "platform2");
-      this.add.image(2614.42424242424,804.757575757574, "platform2");
+      this.platform1=this.add.image(1514.42424242425, 1178.60606060606, "platform2");
+      this.platform2=this.add.image(2284.54545454546, 799.757575757576, "platform2");
+      this.platform3=this.add.image(2614.42424242424,804.757575757574, "platform2");
       this.add.image(2899.27272727272, 425.969696969695, "platform2");
       this.add.image(2460.66666666667, 1355.0303030303, "platform2");
       this.add.image(510.7575757575753, 1198.75757575758, "platform2");
