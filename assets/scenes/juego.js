@@ -34,17 +34,16 @@ export default class juego extends Phaser.Scene {
     wallLayer.setCollisionByProperty({ colision: true });
   
       // Agrega las plataformas
-      this.platform1=this.add.image(1514.42424242425, 1178.60606060606, "platform2");
-      this.platform2=this.add.image(2284.54545454546, 799.757575757576, "platform2");
-      this.platform3=this.add.image(2614.42424242424,804.757575757574, "platform2");
-      this.add.image(2899.27272727272, 425.969696969695, "platform2");
-      this.add.image(2460.66666666667, 1355.0303030303, "platform2");
-      this.add.image(510.7575757575753, 1198.75757575758, "platform2");
-      this.add.image(1869.01515151515, 415.13636363636, "platform2");
-      this.add.image(1539.33333333333, 409.575757575754, "platform2");
-      this.add.image(445.242424242424, 413.181818181818, "platform2");
+      this.platform3=this.add.image(1514.42424242425, 1178.60606060606, "platform2");
+      this.platform4=this.add.image(2284.54545454546, 799.757575757576, "platform2");
+      this.platform6=this.add.image(2614.42424242424,804.757575757574, "platform2");
+      this.platform2=this.add.image(2899.27272727272, 425.969696969695, "platform2");
+      this.platform5=this.add.image(2460.66666666667, 1355.0303030303, "platform2");
+      this.platform1=this.add.image(510.7575757575753, 1198.75757575758, "platform2");
+      this.platform7=this.add.image(1869.01515151515, 415.13636363636, "platform2");
+      this.platform8=this.add.image(1539.33333333333, 409.575757575754, "platform2");
+      this.platform9=this.add.image(445.242424242424, 413.181818181818, "platform2");
     
-      // Colisiones
      
     
 
@@ -52,19 +51,19 @@ export default class juego extends Phaser.Scene {
       inmovable: true,
       allowGravity: false,
     });
-    this.buttons = this.physics.add.group({
-      inmovable: true,
-      allowGravity: false,
-    });
+    // this.buttons = this.physics.add.group({
+    //   inmovable: true,
+    //   allowGravity: false,
+    // });
     this.doorsClosed = this.physics.add.group({
       inmovable: true,
       allowGravity: false,
     });
 
-    this.platformsMobible = this.physics.add.group({
-      inmovable: false,
-      allowGravity: false,
-    });
+    // this.platformsMobible = this.physics.add.group({
+    //   inmovable: false,
+    //   allowGravity: false,
+    // });
 
     this.cursors = this.input.keyboard.createCursorKeys();
     const objectsLayer = map.getObjectLayer("objects");
@@ -81,6 +80,10 @@ export default class juego extends Phaser.Scene {
         }
         case "player": {
           this.player = this.physics.add.sprite(x, y, "lyla");
+          break;
+        }
+        case "ghost": {
+          this.ghost = this.physics.add.sprite(x, y, "spritesheet");
           break;
         }
       }
@@ -147,19 +150,19 @@ export default class juego extends Phaser.Scene {
       this.player.setVelocityY(-550);
     }
     
-  // MovePlatform
-  //   const startY = 1178.60606060606;
-  //   const targetY = -200;
-  //   const duration = randomDuration;
+  MovePlatform
+    // const startY = 1178.60606060606;
+    const targetY = 1198.75757575758;
+    const duration = 6000;
 
-  //   this.tweens.add({
-  //     targets: platformsGroup,
-  //     y: targetY,
-  //     duration: duration,
-  //     ease: "Linear",
-  //     yoyo: true,
-  //     loop: true,
-  //   });
+    this.tweens.add({
+      targets: platform1,
+      y: targetY,
+      duration: duration,
+      ease: "Linear",
+      yoyo: true,
+      loop: true,
+    });
 }
 
   collectCandy(player, candy) {

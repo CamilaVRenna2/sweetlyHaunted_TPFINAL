@@ -10,11 +10,11 @@ export default class Precarga extends Phaser.Scene {
     // load assets
     this.load.tilemapTiledJSON("map1", "../public/tilemap/level1.json");
 
-    this.load.image("background", "./public/images/background.png");
-    this.load.image("platform2", "./public/images/plataforma.png");
-    this.load.image("platform", "./public/images/plataforma2.png");
+    this.load.image("background", "../public/images/background.png");
+    this.load.image("platform2", "../public/images/plataforma.png");
+    this.load.image("platform", "../public/images/plataforma2.png");
     this.load.image("wall", "./public/images/wall.png");
-    this.load.image("button", "./public/images/button.png");
+    this.load.image("button", "../public/images/button.png");
     this.load.image("doorOpen", "../public/images/doorOpen.png");
     this.load.image("doorClosed", "../public/images/doorClosed.png");
     this.load.image("engranaje", "../public/images/engranaje1.png");
@@ -30,14 +30,18 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("level3Button", "../public/images/level3Button.png");
     this.load.image("level3ButtonOn", "../public/images/level3ButtonOn.png");
     this.load.image("level2ButtonBloq", "../public/images/level2ButtonBloq.png");
-    this.load.image("level3ButtonBloq", "../public/images/level3ButtonBloq.png");
+    this.load.image("level2ButtonBloq", "../public/images/level2ButtonBloq.png");
+    
     this.load.image("light", "../public/images/light.png");
     this.load.image(
       "startButtonPressed",
       "../public/images/startButtonPressed.png"
     );
     this.load.image("candy", "../public/images/candy.png");
-
+    this.load.spritesheet("ghost", "../public/images/spritesheet.png",{
+      frameWidth: 110,
+      frameHeight: 171,
+    });
     this.load.spritesheet("lyla", "./public/images/lyla.png", {
       frameWidth: 110,
       frameHeight: 171,
