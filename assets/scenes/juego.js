@@ -1,71 +1,46 @@
-export default class juego extends Phaser.Scene {
+export default class Juego extends Phaser.Scene {
   constructor() {
-    // key of the scene
-    // the key will be used to start the scene by other scenes
     super("juego");
   }
+
   init() {
+    this.healt = 3;
     this.candy = 1;
     this.nivel = 1;
     this.amountcandys = 0;
     console.log("Prueba !");
     this.gameOver = false;
-    var platforms;
-    var tween;
   }
 
   create() {
-    // todo / para hacer: texto de puntaje
     const map = this.make.tilemap({ key: "map1" });
 
-    // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
-    // Phaser's cache (i.e. the name you used in preload)
     const capaBackground = map.addTilesetImage("fondo", "background");
     const capaPlatform = map.addTilesetImage("plataforma2", "platform");
-    const capaEngranaje = map.addTilesetImage("engranaje1", "engranaje");
     const capaWall = map.addTilesetImage("wall", "wall");
-    // Parameters: layer name (or index) from Tiled, tileset, x, y
+    const capaTable = map.addTilesetImage("mesa", "table");
+    const capaLibrary = map.addTilesetImage("library", "library");
+    
     const backgroundLayer = map.createLayer("background", capaBackground, 0, 0);
     const platformLayer = map.createLayer("platform", capaPlatform, 0, 0);
-    const engranajeLayer = map.createLayer("engranaje", capaEngranaje, 0, 0);
     const wallLayer = map.createLayer("wall", capaWall, 0, 0);
-
+    const libraryLayer = map.createLayer("library", capaLibrary, 0, 0);
+    const tableLayer = map.createLayer("table", capaTable, 0, 0);
+    //colision de tiled
+    libraryLayer.setCollisionByProperty({ colision: true });
     platformLayer.setCollisionByProperty({ colision: true });
     wallLayer.setCollisionByProperty({ colision: true });
-  
-      // Agrega las plataformas
-      this.platform3=this.add.image(1514.42424242425, 1178.60606060606, "platform2");
-      this.platform4=this.add.image(2284.54545454546, 799.757575757576, "platform2");
-      this.platform6=this.add.image(2614.42424242424,804.757575757574, "platform2");
-      this.platform2=this.add.image(2899.27272727272, 425.969696969695, "platform2");
-      this.platform5=this.add.image(2460.66666666667, 1355.0303030303, "platform2");
-      this.platform1=this.add.image(510.7575757575753, 1198.75757575758, "platform2");
-      this.platform7=this.add.image(1869.01515151515, 415.13636363636, "platform2");
-      this.platform8=this.add.image(1539.33333333333, 409.575757575754, "platform2");
-      this.platform9=this.add.image(445.242424242424, 413.181818181818, "platform2");
-    
-     
-    
-
+    tableLayer.setCollisionByProperty({ colision: true });
     this.candies = this.physics.add.group({
-      inmovable: true,
+      immovable: true,
       allowGravity: false,
     });
-    // this.buttons = this.physics.add.group({
-    //   inmovable: true,
-    //   allowGravity: false,
-    // });
+
     this.doorsClosed = this.physics.add.group({
-      inmovable: true,
+      immovable: true,
       allowGravity: false,
     });
 
-    // this.platformsMobible = this.physics.add.group({
-    //   inmovable: false,
-    //   allowGravity: false,
-    // });
-
-    this.cursors = this.input.keyboard.createCursorKeys();
     const objectsLayer = map.getObjectLayer("objects");
     objectsLayer.objects.forEach((objData) => {
       const { x = 0, y = 0, name, type } = objData;
@@ -86,30 +61,28 @@ export default class juego extends Phaser.Scene {
           this.ghost = this.physics.add.sprite(x, y, "spritesheet");
           break;
         }
+        case "ghost2": {
+          this.ghost = this.physics.add.sprite(x, y, "spritesheet");
+          break;
+        }
       }
-      // switch (type) {
-      //   case "platform": {
-      //     this.platformsMobible.create(x, y, "platform2");
-      //     break;
-      //   }
-      //   switch (type) {
-      //     case "wall": {
-      //       this.platformsMobible.create(x, y, "wall2");
-      //       break;
-      //     }
-      //   }
-      // }
     });
-    
-    console.log("spawn point player", objectsLayer);
+
     this.player.setBounce(0.0);
     this.player.setCollideWorldBounds(true);
     this.player.setVelocity(10);
 
+    this.ghost.setCollideWorldBounds(true);
+    this.ghost.setVelocity(8);
+    this.physics.add.collider(this.player, this.ghost, this.hurt);
     this.physics.add.collider(this.player, platformLayer);
-    
+    this.physics.add.collider(this.ghost, platformLayer);
+    this.physics.add.collider(this.ghost, wallLayer, this.changeGhostVelocity, null, this);
+    this.physics.add.collider(this.ghost2, platformLayer);
+    this.physics.add.collider(this.ghost2, wallLayer, this.changeGhostVelocity, null, this);
     this.physics.add.collider(this.player, wallLayer);
-
+    this.physics.add.collider(this.player, tableLayer);
+    this.physics.add.collider(this.player, libraryLayer);
     this.physics.add.overlap(
       this.player,
       this.candies,
@@ -122,15 +95,16 @@ export default class juego extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.amountcandysTexto = this.add.text(
-      10,
-      20,
-      `Nivel: ${this.nivel} / Dulces obtenidos: ${this.amountcandys}`
+      40,
+      40,
+      ` x ${this.amountcandys}`
     );
 
     this.amountcandysTexto.setScrollFactor(0);
-    
-    
-    }
+
+    this.ghost.setVelocityX(-150);
+    this.cursors = this.input.keyboard.createCursorKeys();
+  }
 
   update() {
     if (this.gameOver) {
@@ -149,22 +123,15 @@ export default class juego extends Phaser.Scene {
     if (this.cursors.up.isDown && this.player.body.blocked.down) {
       this.player.setVelocityY(-550);
     }
-    
-  MovePlatform
-    // const startY = 1178.60606060606;
-    const targetY = 1198.75757575758;
-    const duration = 6000;
-
-    this.tweens.add({
-      targets: platform1,
-      y: targetY,
-      duration: duration,
-      ease: "Linear",
-      yoyo: true,
-      loop: true,
-    });
-}
-
+    if (this.ghost.body.velocity.x < 0) {
+      this.ghost.anims.play("Gleft", true); // Usar la animación "Gleft" cuando la velocidad sea negativa
+    } else if (this.ghost.body.velocity.x > 0) {
+      this.ghost.anims.play("Gright", true); // Usar la animación "Gright" cuando la velocidad sea positiva
+    }
+  }
+  changeGhostVelocity() {
+    this.ghost.setVelocityX(-this.ghost.body.velocity.x); // Cambiar la velocidad del sprite "ghost" a la dirección opuesta
+  }
   collectCandy(player, candy) {
     console.log("candy hit");
     candy.disableBody(true, true);

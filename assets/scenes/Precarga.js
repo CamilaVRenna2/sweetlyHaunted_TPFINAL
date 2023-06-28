@@ -9,10 +9,11 @@ export default class Precarga extends Phaser.Scene {
   preload() {
     // load assets
     this.load.tilemapTiledJSON("map1", "../public/tilemap/level1.json");
-
     this.load.image("background", "../public/images/background.png");
     this.load.image("platform2", "../public/images/plataforma.png");
     this.load.image("platform", "../public/images/plataforma2.png");
+    this.load.image("library", "./public/images/library.png");
+    this.load.image("table", "../public/images/mesa.png");
     this.load.image("wall", "./public/images/wall.png");
     this.load.image("button", "../public/images/button.png");
     this.load.image("doorOpen", "../public/images/doorOpen.png");
@@ -31,21 +32,12 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("level3ButtonOn", "../public/images/level3ButtonOn.png");
     this.load.image("level2ButtonBloq", "../public/images/level2ButtonBloq.png");
     this.load.image("level2ButtonBloq", "../public/images/level2ButtonBloq.png");
-    
     this.load.image("light", "../public/images/light.png");
-    this.load.image(
-      "startButtonPressed",
-      "../public/images/startButtonPressed.png"
-    );
+    this.load.image("startButtonPressed", "../public/images/startButtonPressed.png");
+    this.load.image("tutorial", "../public/images/tuto.png");
     this.load.image("candy", "../public/images/candy.png");
-    this.load.spritesheet("ghost", "../public/images/spritesheet.png",{
-      frameWidth: 110,
-      frameHeight: 171,
-    });
-    this.load.spritesheet("lyla", "./public/images/lyla.png", {
-      frameWidth: 110,
-      frameHeight: 171,
-    });
+    this.load.spritesheet("ghost", "../public/images/spritesheet.png",{frameWidth: 168, frameHeight: 180,});
+    this.load.spritesheet("lyla", "./public/images/lyla.png", {frameWidth: 110,frameHeight: 171,});
 
   }
 
@@ -75,14 +67,14 @@ export default class Precarga extends Phaser.Scene {
     this.anims.create({
       key: "Gleft",
       frames: this.anims.generateFrameNumbers("ghost", { start: 0, end: 1 }),
-      frameRate: 8,
+      frameRate: 9,
       repeat: -1,
     });
 
     this.anims.create({
       key: "Gright",
       frames: this.anims.generateFrameNumbers("ghost", { start: 2, end: 3 }),
-      frameRate: 8,
+      frameRate: 9,
       repeat: -1,
     });
     // init scene juego
