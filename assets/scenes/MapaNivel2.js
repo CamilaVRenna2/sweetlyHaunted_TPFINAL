@@ -4,9 +4,9 @@ export default class MapaNivel2 extends Phaser.Scene {
     }
   
     create() {
-      this.add.image(960, 600, "mapaNivelBackGround");
+      this.add.image(610, 380, "mapaNivelBackGround");
       let level1Button = this.add
-        .image(1300, 550, "level1Button")
+        .image(180, 430, "level1Button")
         .setInteractive(this.input.makePixelPerfect());
   
       level1Button.on("pointerdown", () => {
@@ -24,7 +24,7 @@ export default class MapaNivel2 extends Phaser.Scene {
       });
       ////////
       let level2Button = this.add
-        .image(1300, 550, "level2Button")
+        .image(585, 430, "level2Button")
         .setInteractive(this.input.makePixelPerfect());
   
       Level2Button.on("pointerdown", () => {
@@ -42,7 +42,7 @@ export default class MapaNivel2 extends Phaser.Scene {
       });
 
       let level3Button = this.add
-      .image(1300, 550, "level3Button")
+      .image(960, 430, "level3Button")
       .setInteractive(this.input.makePixelPerfect());
 
     Level3Button.on("pointerdown", () => {

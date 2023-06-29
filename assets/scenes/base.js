@@ -153,9 +153,10 @@ export default class juego extends Phaser.Scene {
       this
     );
 
-    this.cameras.main.startFollow(this.player);
+    
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+    this.cameras.main.startFollow(this.player);
     this.amountcandysTexto = this.add.text(
       40,
       40,
@@ -212,8 +213,8 @@ export default class juego extends Phaser.Scene {
     this.amountcandys++;
     console.log(this.amountcandys);
     this.amountcandysTexto.setText(
-      `Nivel: ${this.nivel} / Candys collected: ${this.amountcandys}`
+      `x ${this.amountcandys}`
     );
-  }
 
+}
 }

@@ -8,6 +8,7 @@ export default class Precarga extends Phaser.Scene {
 
   preload() {
     // load assets
+    
     this.load.tilemapTiledJSON("map1", "../public/tilemap/level1.json");
     this.load.image("background", "../public/images/background.png");
     this.load.image("platform2", "../public/images/plataforma.png");
@@ -31,11 +32,23 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("level3Button", "../public/images/level3Button.png");
     this.load.image("level3ButtonOn", "../public/images/level3ButtonOn.png");
     this.load.image("level2ButtonBloq", "../public/images/level2ButtonBloq.png");
-    this.load.image("level2ButtonBloq", "../public/images/level2ButtonBloq.png");
+    this.load.image("level3ButtonBloq", "../public/images/level3ButtonBloq.png");
     this.load.image("light", "../public/images/light.png");
     this.load.image("startButtonPressed", "../public/images/startButtonPressed.png");
+    this.load.image("interface", "../public/images/interface.png");
+    this.load.image("gameOver", "../public/images/gameover.png");
+    this.load.image("3hearts", "../public/images/fulllife.png");
+    this.load.image("2hearts", "../public/images/partlife.png");
+    this.load.image("1hearts", "../public/images/lastlife.png");
+    this.load.image("0hearts", "../public/images/nolife.png");
     this.load.image("tutorial", "../public/images/tuto.png");
     this.load.image("candy", "../public/images/candy.png");
+    this.load.image("tutoButton", "../public/images/tutoButton.png");
+    this.load.image("tutoButtonOn", "../public/images/tutoButtonOn.png");
+    this.load.image("tutoButtonPressed", "../public/images/tutoButtonpressed.png");
+    this.load.image("retryButtonPressed", "../public/images/retryButtonpressed.png");
+    this.load.image("retryButton", "../public/images/retryButton.png");
+    this.load.image("wine", "../public/images/wine.png");
     this.load.spritesheet("ghost", "../public/images/spritesheet.png",{frameWidth: 168, frameHeight: 180,});
     this.load.spritesheet("lyla", "./public/images/lyla.png", {frameWidth: 110,frameHeight: 171,});
 
