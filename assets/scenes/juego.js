@@ -63,10 +63,7 @@ export default class Juego extends Phaser.Scene {
         }
       }
     });
-    // this.platforms = this.physics.add.group({
-    //   immovable: true,
-    //   allowGravity:false,
-    // });
+    
   this.platforms = this.physics.add.group();
   const platform1 = this.platforms.create(470.757575757575, 1534.75757575758, 'platform2');
   const platform2 = this.platforms.create(1422.42424242425, 1526.60606060606, 'platform2');
@@ -90,7 +87,10 @@ export default class Juego extends Phaser.Scene {
   platform9.body.allowGravity = false;
   platform10.body.allowGravity = false;
   
-  
+  this.platforms = this.physics.add.group({
+      immovable: true,
+      allowGravity:false,
+    });
 
   this.player.setBounce(0.0);
   this.player.setCollideWorldBounds(true);
@@ -123,16 +123,7 @@ export default class Juego extends Phaser.Scene {
     platform.body.moves = false;
   });
     
-    this.physics.add.collider(this.player, this.platform1);
-    this.physics.add.collider(this.player, this.platform2);
-    this.physics.add.collider(this.player, this.platform3);
-    this.physics.add.collider(this.player, this.platform4);
-    this.physics.add.collider(this.player, this.platform5);
-    this.physics.add.collider(this.player, this.platform6);
-    this.physics.add.collider(this.player, this.platform7); 
-    this.physics.add.collider(this.player, this.platform8);
-    this.physics.add.collider(this.player, this.platform9);
-    this.physics.add.collider(this.player, this.platform10);
+  this.physics.add.collider(this.player, this.platforms);
     this.physics.add.overlap(this.player, this.buttons, this.overlapButton, null, this);
     this.physics.add.collider(this.ghosts, wallLayer, this.changeGhostDirection, null, this);
     this.physics.add.collider(this.player, this.ghosts, this.hitGhost, null, this);
