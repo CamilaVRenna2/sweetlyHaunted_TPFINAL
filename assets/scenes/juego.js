@@ -87,10 +87,10 @@ export default class Juego extends Phaser.Scene {
   platform9.body.allowGravity = false;
   platform10.body.allowGravity = false;
   
-  this.platforms = this.physics.add.group({
-      immovable: true,
-      allowGravity:false,
-    });
+  // this.platforms = this.physics.add.group({
+  //     immovable: true,
+  //     allowGravity:false,
+  //   });
 
   this.player.setBounce(0.0);
   this.player.setCollideWorldBounds(true);
