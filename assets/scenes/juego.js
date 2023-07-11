@@ -22,13 +22,14 @@ export default class Juego extends Phaser.Scene {
     const capaBackground = map.addTilesetImage("fondo", "background");
     const capaPlatform = map.addTilesetImage("plataforma2", "platform");
     const capaWall = map.addTilesetImage("wall", "wall");
-
+    const capaFakeWall = map.addTilesetImage("wall", "wall");
     const backgroundLayer = map.createLayer("background", capaBackground, 0, 0);
     const platformLayer = map.createLayer("platform", capaPlatform, 0, 0);
     const wallLayer = map.createLayer("wall", capaWall, 0, 0);
-
+    const fakeWallLayer = map.createLayer("fakewall", capaFakeWall, 0, 0);
     platformLayer.setCollisionByProperty({ colision: true });
     wallLayer.setCollisionByProperty({ colision: true });
+ 
 
     this.ghosts = this.physics.add.group();
     this.ghost1 = this.ghosts.create(1069.33229965257, 529.527895023976, 'ghost');
@@ -123,6 +124,15 @@ export default class Juego extends Phaser.Scene {
   });
     
     this.physics.add.collider(this.player, this.platform1);
+    this.physics.add.collider(this.player, this.platform2);
+    this.physics.add.collider(this.player, this.platform3);
+    this.physics.add.collider(this.player, this.platform4);
+    this.physics.add.collider(this.player, this.platform5);
+    this.physics.add.collider(this.player, this.platform6);
+    this.physics.add.collider(this.player, this.platform7); 
+    this.physics.add.collider(this.player, this.platform8);
+    this.physics.add.collider(this.player, this.platform9);
+    this.physics.add.collider(this.player, this.platform10);
     this.physics.add.overlap(this.player, this.buttons, this.overlapButton, null, this);
     this.physics.add.collider(this.ghosts, wallLayer, this.changeGhostDirection, null, this);
     this.physics.add.collider(this.player, this.ghosts, this.hitGhost, null, this);
