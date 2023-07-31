@@ -63,8 +63,10 @@ export default class Juego extends Phaser.Scene {
         }
       }
     });
-    
-  this.platforms = this.physics.add.group();
+      this.platforms = this.physics.add.group({
+      // immovable: true,
+      allowGravity:false,
+    });
   const platform1 = this.platforms.create(470.757575757575, 1534.75757575758, 'platform2');
   const platform2 = this.platforms.create(1422.42424242425, 1526.60606060606, 'platform2');
   const platform3 = this.platforms.create(1976.06060606061, 1519.87878787879, 'platform2');
@@ -87,10 +89,7 @@ export default class Juego extends Phaser.Scene {
   platform9.body.allowGravity = false;
   platform10.body.allowGravity = false;
   
-  // this.platforms = this.physics.add.group({
-  //     immovable: true,
-  //     allowGravity:false,
-  //   });
+
 
   this.player.setBounce(0.0);
   this.player.setCollideWorldBounds(true);
@@ -198,7 +197,6 @@ export default class Juego extends Phaser.Scene {
     var platform = this.platforms.getChildren()[this.buttons.getChildren().indexOf(this.buttons.getFirst(true))];
     var originalY = platform.y;
     var targetY = originalY + 300;
-
     this.tweens.add({
       targets: platform,
       y: targetY,
@@ -245,7 +243,4 @@ export default class Juego extends Phaser.Scene {
     }
   }
 
-  changeGhostVelocity(ghost, wall) {
-    ghost.setVelocityX(-ghost.body.velocity.x);
-  }
 }
