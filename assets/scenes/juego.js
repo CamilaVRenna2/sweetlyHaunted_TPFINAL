@@ -4,11 +4,9 @@ export default class Juego extends Phaser.Scene {
   }
 
   init() {
-    this.ghosts;
     this.candy = 1;
     this.nivel = 1;
     this.amountcandys = 0;
-    console.log("¡Prueba!");
     this.gameOver = false;
     this.platforms;
     this.buttons;
@@ -30,20 +28,7 @@ export default class Juego extends Phaser.Scene {
     platformLayer.setCollisionByProperty({ colision: true });
     wallLayer.setCollisionByProperty({ colision: true });
 
-    this.ghosts = this.physics.add.group();
-    this.ghost1 = this.ghosts.create(
-      1069.33229965257,
-      529.527895023976,
-      "ghost"
-    );
-    this.ghost2 = this.ghosts.create(1058.66666666667, 1292, "ghost");
-    this.ghosts.setVelocityX(100);
-    this.ghost1.anims.play("Gright");
-    this.ghost2.anims.play("Gright");
-    this.candies = this.physics.add.group({
-      immovable: true,
-      allowGravity: false,
-    });
+   
     this.door = this.physics.add.group({
       immovable: true,
       allowGravity: false,
@@ -181,10 +166,16 @@ export default class Juego extends Phaser.Scene {
       this.player.setVelocityX(0);
       this.player.anims.play("turn");
     }
-
-    if (this.cursors.up.isDown && this.player.body.blocked.down) {
+    if (this.cursors.up.isDown && this.cursors.left.isDown) {
       this.player.setVelocityY(-550);
-    }
+      this.player.anims.play("jumpLeft");
+  }else if(this.cursors.up.isDown && this.cursors.right.isDown){
+      this.player.setVelocityY(-550);
+      this.player.anims.play("jumpRight");
+  }else if (this.cursors.up.isDown && this.player.body.blocked.down) {
+      this.player.setVelocityY(-550);
+      this.player.anims.play("jumpLeft")
+}
 
     if (
       Phaser.Input.Keyboard.JustDown(this.spacebar) &&
@@ -195,22 +186,6 @@ export default class Juego extends Phaser.Scene {
     }
   }
 
-  hitGhost(player, ghost) {
-    this.lives--;
-    if (this.lives === 0) {
-      this.gameOver();
-    }
-  }
-
-  changeGhostDirection(ghost, wallLayer) {
-    ghost.setVelocityX(ghost.body.velocity.x * -1);
-
-    if (ghost.body.velocity.x < 0) {
-      ghost.anims.play("Gleft", true);
-    } else {
-      ghost.anims.play("Gright", true);
-    }
-  }
 
   overlapButton(player, button) {
     this.overlappingButton = true;
@@ -246,23 +221,4 @@ export default class Juego extends Phaser.Scene {
     this.amountcandysTexto.setText(`x ${this.amountcandys}`);
   }
 
-  hurt(player, ghost) {
-    player.setTint(0xff0000);
-    this.healthN = this.healthN - 1;
-
-    if (this.healthN <= 0) {
-      this.gameOver = true;
-      console.log("Game Over");
-      this.scene.restart();
-    } else {
-      console.log("Health: " + this.healthN);
-      this.time.addEvent({
-        delay: 1000,
-        callback: () => {
-          player.clearTint();
-        },
-        loop: false,
-      });
-    }
-  }
 }

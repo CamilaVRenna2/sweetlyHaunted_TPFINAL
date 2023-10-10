@@ -49,9 +49,7 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("wine", "./public/images/wine.png");
     this.load.spritesheet("ghost", "./public/images/spritesheet.png",{frameWidth: 168, frameHeight: 180,});
     this.load.spritesheet("lyla", "./public/images/lyla.png", {frameWidth: 110,frameHeight: 171,});
-    this.load.spritesheet("lylaJump", "./public/images/spritejump.png", {frameWidth: 100,frameHeight: 171,});
-
-  
+    // this.load.spritesheet("lylaJump", "./public/images/spritejump.png", {frameWidth: 100,frameHeight: 171,});
   }
 
   create() {
@@ -77,17 +75,17 @@ export default class Precarga extends Phaser.Scene {
       repeat: -1,
     });
     
-    this.anims.create({
-      key: "jumpLeft",
-      frames: this.anims.generateFrameNumbers("lylaJump", { frame: 2}),
-      frameRate: 8,
-    });
-    this.anims.create({
-      key: "jumpRight",
-      frames: this.anims.generateFrameNumbers("lylaJump", { frame: 1}),
-      frameRate: 8,
+    // this.anims.create({
+    //   key: "jumpLeft",
+    //   frames: this.anims.generateFrameNumbers("lylaJump", { frame: 2}),
+    //   frameRate: 8,
+    // });
+    // this.anims.create({
+    //   key: "jumpRight",
+    //   frames: this.anims.generateFrameNumbers("lylaJump", { frame: 1}),
+    //   frameRate: 8,
     
-    });
+    // });
     // //////
     this.anims.create({
       key: "Gleft",
