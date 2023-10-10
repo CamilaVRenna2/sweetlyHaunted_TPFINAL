@@ -13,8 +13,6 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("background", "./public/images/background.png");
     this.load.image("platform2", "./public/images/plataforma.png");
     this.load.image("platform", "./public/images/plataforma2.png");
-    this.load.image("library", "./public/images/library.png");
-    this.load.image("table", "./public/images/mesa.png");
     this.load.image("wall", "./public/images/wall.png");
     this.load.image("button", "./public/images/button.png");
     this.load.image("doorOpen", "./public/images/doorOpen.png");
@@ -51,7 +49,9 @@ export default class Precarga extends Phaser.Scene {
     this.load.image("wine", "./public/images/wine.png");
     this.load.spritesheet("ghost", "./public/images/spritesheet.png",{frameWidth: 168, frameHeight: 180,});
     this.load.spritesheet("lyla", "./public/images/lyla.png", {frameWidth: 110,frameHeight: 171,});
+    this.load.spritesheet("lylaJump", "./public/images/spritejump.png", {frameWidth: 100,frameHeight: 171,});
 
+  
   }
 
   create() {
@@ -75,6 +75,18 @@ export default class Precarga extends Phaser.Scene {
       frames: this.anims.generateFrameNumbers("lyla", { start: 5, end: 8 }),
       frameRate: 8,
       repeat: -1,
+    });
+    
+    this.anims.create({
+      key: "jumpLeft",
+      frames: this.anims.generateFrameNumbers("lylaJump", { frame: 2}),
+      frameRate: 8,
+    });
+    this.anims.create({
+      key: "jumpRight",
+      frames: this.anims.generateFrameNumbers("lylaJump", { frame: 1}),
+      frameRate: 8,
+    
     });
     // //////
     this.anims.create({
