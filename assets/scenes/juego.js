@@ -184,6 +184,7 @@ export default class Juego extends Phaser.Scene {
     ) {
       this.activatePlatform();
     }
+    console.log(this.candies);
   }
 
 
